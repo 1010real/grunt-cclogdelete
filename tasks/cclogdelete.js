@@ -20,6 +20,16 @@ module.exports = function(grunt) {
       separator: ', '
     });
 
+    // grunt.log.writeln(JSON.stringify(options));
+
+    var done = this.async();
+    var fileCount = this.files.length;
+    var doneCount = 0;
+
+    grunt.log.writeln('fileCount:' + fileCount);
+
+    grunt.log.writeln('process.cwd:' + process.cwd());
+
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
       // Concat specified files.
@@ -32,18 +42,44 @@ module.exports = function(grunt) {
           return true;
         }
       }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+        var spawn = require('child_process').spawn;
+        var cmd = spawn('ruby', ['node_modules/grunt-cclogdelete/cclogdelete.rb', filepath], { cwd:"." });
+        var buff = "";
+
+        cmd.stdout.on('data', function(data) {
+          // grunt.log.writeln('stdout:' + data);
+
+          buff += String(data);
+        });
+
+        cmd.stderr.on('data', function(data) {
+          grunt.log.writeln('stderr: ' + data);
+          done(false);
+        });
+
+        cmd.on('close', function(code) {
+          if (code !== 0) {
+            grunt.log.writeln('child process exited with code : ' + code);
+            done(false);
+          }
+
+          // Print a success message.
+          grunt.log.writeln('File "' + f.dest + '" created.');
+
+          // Write the destination file.
+          grunt.file.write(f.dest, buff);
+
+          // Count done processes and check end of all.
+          doneCount++;
+          if (doneCount >= fileCount) done();
+        });
+
+        grunt.log.writeln('run cclogdelete. filepath = ' + filepath);
+
+      });
 
       // Handle options.
       src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
 
