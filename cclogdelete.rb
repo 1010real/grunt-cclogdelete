@@ -4,7 +4,7 @@ STDOUT.sync = true;
 begin
   filename = ARGV[0];
 
-  regexp  = /cc\.log(?<paren>\((?:[^()]|\g<paren>)*\)[\s\;]?)/m
+  regexp  = /(\s*\/\/\s*|\s*)?cc\.log(?<paren>\((?:[^()]|\g<paren>)*\)[\s\;]?)/m
   replace = ''
 
   File.open(filename, "r") do |file|
