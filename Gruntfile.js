@@ -1,6 +1,6 @@
 /*
  * grunt-cclogdelete
- * https://github.com/okamoto-masao/grunt-cclogdelete
+ * https://github.com/1010real/grunt-cclogdelete
  *
  * Copyright (c) 2016 okamoto-masao
  * Licensed under the MIT license.

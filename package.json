@@ -2,22 +2,22 @@
   "name": "grunt-cclogdelete",
   "description": "delete cclog() with ruby script.",
   "version": "0.1.0",
-  "homepage": "https://github.com/okamoto-masao/grunt-cclogdelete",
+  "homepage": "https://github.com/1010real/grunt-cclogdelete",
   "author": {
     "name": "okamoto-masao",
     "email": "moka0329@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/okamoto-masao/grunt-cclogdelete.git"
+    "url": "git://github.com/1010real/grunt-cclogdelete.git"
   },
   "bugs": {
-    "url": "https://github.com/okamoto-masao/grunt-cclogdelete/issues"
+    "url": "https://github.com/1010real/grunt-cclogdelete/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/okamoto-masao/grunt-cclogdelete/blob/master/LICENSE-MIT"
+      "url": "https://github.com/1010real/grunt-cclogdelete/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
