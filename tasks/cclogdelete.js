@@ -1,8 +1,8 @@
 /*
  * grunt-cclogdelete
- * https://github.com/okamoto-masao/grunt-cclogdelete
+ * https://github.com/1010real/grunt-cclogdelete
  *
- * Copyright (c) 2016 okamoto-masao
+ * Copyright (c) 2016 1010real
  * Licensed under the MIT license.
  */
 
@@ -16,8 +16,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('cclogdelete', 'delete cclog() with ruby script.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
+      
     });
 
     // grunt.log.writeln(JSON.stringify(options));
@@ -78,8 +77,6 @@ module.exports = function(grunt) {
 
       });
 
-      // Handle options.
-      src += options.punctuation;
     });
   });
 
